@@ -1,5 +1,7 @@
 FROM ngrok/ngrok:3-alpine
 
+USER root
+
 RUN adduser -D appuser
 
 USER appuser
