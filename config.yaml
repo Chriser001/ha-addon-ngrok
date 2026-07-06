@@ -1,0 +1,23 @@
+name: Ngrok
+version: 1.0.0
+slug: ngrok
+description: Ngrok tunnel client with fixed URL support
+url: https://github.com/Chriser001/ha-addon-ngrok
+arch:
+  - aarch64
+  - amd64
+  - armv7
+startup: application
+boot: auto
+options:
+  auth_token: ""
+  region: "us"
+  local_port: 9123
+  url_param: "default.internal"
+schema:
+  auth_token: str
+  region: str
+  local_port: int
+  url_param: str
+ports:
+  4040/tcp: 4040
