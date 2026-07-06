@@ -1,18 +1,12 @@
 FROM ngrok/ngrok:3-alpine
 
-USER root
-
-RUN adduser -D appuser
-
-USER appuser
-
 ENTRYPOINT ["/bin/sh", "-c", "\
 OPTIONS_FILE=/data/options.json && \
 NGROK_CONFIG_PATH=/data/ngrok.yml && \
-AUTH_TOKEN=$(jq -r '.auth_token' \"$OPTIONS_FILE\") && \
-REGION=$(jq -r '.region' \"$OPTIONS_FILE\") && \
-LOCAL_PORT=$(jq -r '.local_port' \"$OPTIONS_FILE\") && \
-URL_PARAM=$(jq -r '.url_param' \"$OPTIONS_FILE\") && \
+AUTH_TOKEN=$(sed -n 's/.*\"auth_token\"[^\"]*\"\\([^\"]*\\)\".*/\\1/p' \"$OPTIONS_FILE\" | tr -d ' \\t\\n\\r') && \
+REGION=$(sed -n 's/.*\"region\"[^\"]*\"\\([^\"]*\\)\".*/\\1/p' \"$OPTIONS_FILE\" | tr -d ' \\t\\n\\r') && \
+LOCAL_PORT=$(sed -n 's/.*\"local_port\"[^\"]*:\\([^,]*\\).*/\\1/p' \"$OPTIONS_FILE\" | tr -d ' \\t\\n\\r') && \
+URL_PARAM=$(sed -n 's/.*\"url_param\"[^\"]*\"\\([^\"]*\\)\".*/\\1/p' \"$OPTIONS_FILE\" | tr -d ' \\t\\n\\r') && \
 cat > \"$NGROK_CONFIG_PATH\" <<EOF\n\
 version: 2\n\
 authtoken: ${AUTH_TOKEN}\n\
