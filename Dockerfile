@@ -10,6 +10,7 @@ URL_PARAM=$(sed -n 's/.*\"url_param\"[^\"]*\"\\([^\"]*\\)\".*/\\1/p' \"$OPTIONS_
 cat > \"$NGROK_CONFIG_PATH\" <<EOF\n\
 version: 2\n\
 authtoken: ${AUTH_TOKEN}\n\
+region: ${REGION}\n\
 EOF\n\
-exec ngrok http \"$LOCAL_PORT\" --url \"$URL_PARAM\" --region \"$REGION\" --config \"$NGROK_CONFIG_PATH\" \
+exec ngrok http \"$LOCAL_PORT\" --url \"$URL_PARAM\" --config \"$NGROK_CONFIG_PATH\" \
 "]
