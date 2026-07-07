@@ -11,11 +11,11 @@ startup: application
 boot: auto
 options:
   auth_token: ""
-  local_port: 8123
+  upstream_url: "http://host.docker.internal:8123"
   url_param: ""
 schema:
   auth_token: str
-  local_port: int
+  upstream_url: str
   url_param: str
 ports:
   4040/tcp: 4040
