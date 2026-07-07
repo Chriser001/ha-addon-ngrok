@@ -1,5 +1,7 @@
 FROM ngrok/ngrok:3-alpine
 
+USER root
+
 ENTRYPOINT ["/bin/sh", "-c", "\
 OPTIONS_FILE=/data/options.json && \
 NGROK_CONFIG_PATH=/tmp/ngrok.yml && \
