@@ -11,8 +11,8 @@ startup: application
 boot: auto
 options:
   auth_token: ""
-  local_port: 9123
-  url_param: "default.internal"
+  local_port: 8123
+  url_param: "viable-snipe-annually.ngrok-free.app"
 schema:
   auth_token: str
   local_port: int
