@@ -11,12 +11,10 @@ startup: application
 boot: auto
 options:
   auth_token: ""
-  region: "us"
   local_port: 9123
   url_param: "default.internal"
 schema:
   auth_token: str
-  region: str
   local_port: int
   url_param: str
 ports:
