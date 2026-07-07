@@ -11,8 +11,8 @@ startup: application
 boot: auto
 options:
   auth_token: ""
-  upstream_url: "http://192.168.0.155:8123"
-  url_param: ""
+  upstream_url: "http://homeassistant.local:8123"
+  url_param: "https://hass.internal"
 schema:
   auth_token: str
   upstream_url: str
