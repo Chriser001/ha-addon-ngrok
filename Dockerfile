@@ -12,5 +12,5 @@ cat > \"$NGROK_CONFIG_PATH\" <<EOF\n\
 version: 2\n\
 authtoken: ${AUTH_TOKEN}\n\
 EOF\n\
-exec ngrok http \"$LOCAL_PORT\" --url \"$URL_PARAM\" --config \"$NGROK_CONFIG_PATH\" \
+if [ -n \"$URL_PARAM\" ]; then\n  exec ngrok http \"$LOCAL_PORT\" --url \"$URL_PARAM\" --pooling-enabled --config \"$NGROK_CONFIG_PATH\"\nelse\n  exec ngrok http \"$LOCAL_PORT\" --pooling-enabled --config \"$NGROK_CONFIG_PATH\"\nfi \
 "]
